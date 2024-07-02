@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        function speak() {
+            // Get the prediction result
+            var prediction = "{{ prediction }}"; // Replace with your actual prediction variable
+            
+            // Create an instance of SpeechSynthesisUtterance
+            var utterance = new SpeechSynthesisUtterance(prediction);
+            
+            // Optionally configure the voice and other parameters
+            // utterance.voice = speechSynthesis.getVoices()[0]; // Example to set specific voice
+            
+            // Speak the text
+            window.speechSynthesis.speak(utterance);
+        }
+    </script>
+    <title>Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            /* Add the background image */
+            background-image: url('{{ url_for('static', filename='img4.jpg') }}');
+            background-size: cover; /* Cover the entire background */
+            background-repeat: no-repeat; /* Prevent image repetition */
+            background-attachment: fixed; /* Fixed background when scrolling */
+            background-position: center; /* Center the background image */
+            margin: 0; /* Remove default margin */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Full viewport height */
+        }
+
+        .result-box {
+            background-color: rgba(0, 0, 0, 0.5); /* Black with 50% opacity */
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 80%;
+            margin: 0 auto;
+        }
+
+        h2 {
+            color: white;
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #020802;
+            color: rgb(244, 248, 245);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 40px;
+            margin-right: 90px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="result-box">
+        <h2>Result</h2>
+        <p>{{ prediction }}</p>
+    </div>
+    
+    <button onclick="speak()">Result Voice</button>
+</body>
+</html>

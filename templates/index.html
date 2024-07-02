@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Machine Learning Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            background-image: url('{{ url_for('static', filename='img3.jpg') }}'); /* Add the background image */
+            background-size: cover; /* Cover the entire background */
+            background-repeat: no-repeat; /* Prevent image repetition */
+            background-attachment: fixed; /* Fixed background when scrolling */
+            background-position: center; /* Center the background image */
+        }
+
+        
+        
+        .container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            /*background-color: rgba(0, 0, 0, 0.5);*/
+            background-color: rgba(0, 108, 65, 0.1); /* Transparent green background */
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 800px;
+            margin: 20px auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-color: rgb(0, 0, 0);
+            position: relative;
+        }
+
+        .container div {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"] {
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #34e277;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            grid-column: span 2;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: rgb(166, 240, 188);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+       
+
+        h2 {
+            color: rgb(3, 141, 44);
+            text-align: center;
+        font-weight:bolder;
+        text-shadow:
+        -0.5px -0.5px 0 #000,  
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000;
+    -webkit-text-stroke: 1px rgba(0,0,0,0.5);
+        }
+
+        h3 {
+            text-align: center;
+            color: #8ecb14;
+            border:black ;
+            outline-width: 0cap;
+            text-shadow:
+        -1px -1px 0 #000,  
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000;
+    -webkit-text-stroke: 1px rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="heartbeat"></div>
+    
+    <h2>Chronic Kidney Diseases Identification System</h2>
+    <h3>Enter Data for check</h3>
+    <form action="/predict" method="post">
+        <div class="container">
+            <div>
+                <label for="age">Age</label>
+                <input type="text" id="age" name="age" required>
+
+                <label for="bp">Blood Pressure</label>
+                <input type="text" id="bp" name="bp" required>
+
+                <label for="sg">Specific Gravity</label>
+                <input type="text" id="sg" name="sg" required>
+
+                <label for="al">Albumin</label>
+                <input type="text" id="al" name="al" required>
+
+                <label for="su">Sugar</label>
+                <input type="text" id="su" name="su" required>
+
+                <label for="rbc">Red Blood Cells (RBC)</label>
+                <input type="text" id="rbc" name="rbc" required>
+
+                <label for="pc">Pus Cell</label>
+                <input type="text" id="pc" name="pc" required>
+
+                <label for="pcc">Pus Cell Clumps</label>
+                <input type="text" id="pcc" name="pcc" required>
+
+                <label for="ba">Bacteria</label>
+                <input type="text" id="ba" name="ba" required>
+            </div>
+            <div>
+                <label for="bgr">Blood Glucose Random</label>
+                <input type="text" id="bgr" name="bgr" required>
+
+                <label for="bu">Blood Urea</label>
+                <input type="text" id="bu" name="bu" required>
+
+                <label for="sc">Serum Creatinine</label>
+                <input type="text" id="sc" name="sc" required>
+
+                <label for="sod">Sodium</label>
+                <input type="text" id="sod" name="sod" required>
+
+                <label for="pot">Potassium</label>
+                <input type="text" id="pot" name="pot" required>
+
+                <label for="hemo">Hemoglobin</label>
+                <input type="text" id="hemo" name="hemo" required>
+
+                <label for="pcv">Packed Cell Volume (PCV)</label>
+                <input type="text" id="pcv" name="pcv" required>
+
+                <label for="wc">White Blood Cell Count (WC)</label>
+                <input type="text" id="wc" name="wc" required>
+
+                <label for="rc">Red Blood Cell Count (RC)</label>
+                <input type="text" id="rc" name="rc" required>
+
+                <label for="htn">Hypertension (HTN)</label>
+                <input type="text" id="htn" name="htn" required>
+
+                <label for="dm">Diabetes Mellitus (DM)</label>
+                <input type="text" id="dm" name="dm" required>
+
+                <label for="cad">Coronary Artery Disease (CAD)</label>
+                <input type="text" id="cad" name="cad" required>
+
+                <label for="appet">Appetite</label>
+                <input type="text" id="appet" name="appet" required>
+
+                <label for="pe">Pedal Edema (PE)</label>
+                <input type="text" id="pe" name="pe" required>
+
+                <label for="ane">Anemia (ANE)</label>
+                <input type="text" id="ane" name="ane" required>
+            </div>
+        </div>
+        <input type="submit" value="Predict">
+    </form>
+</body>
+</html>
